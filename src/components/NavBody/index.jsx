@@ -4,6 +4,7 @@ import Logo from "../Icons/Logo.svg?react";
 import Category from "../Icons/Category.svg?react";
 import TrendUp from "../Icons/TrendUp.svg?react";
 import Profile from "../Icons/Profile.svg?react";
+import BoxIcon from "../Icons/Box.svg?react";
 import Discount from "../Icons/Discount.svg?react";
 import Info from "../Icons/Info.svg?react";
 import Moon from "../Icons/Moon.svg?react";
@@ -54,11 +55,16 @@ export function NavBody({ theme, isDarkTheme, onSwitch }) {
         width: 80,
         padding: "20px 17px",
         height: "100vh",
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.background.paper_2,
         borderRight: "1px solid #EBECF2",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        overflowY: "auto",
+        // overflowX: "hidden"
+        "::-webkit-scrollbar": {
+          display: "none",
+        },
       }}
     >
       <Box className="top_items">
@@ -87,7 +93,7 @@ export function NavBody({ theme, isDarkTheme, onSwitch }) {
             <Profile />
           </IconWrapper>
           <IconWrapper href={"#box"} color="#B7B0B0">
-            <Profile />
+            <BoxIcon />
           </IconWrapper>
           <IconWrapper href={"#discount"}>
             <Discount />
