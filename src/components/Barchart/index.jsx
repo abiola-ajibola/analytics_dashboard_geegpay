@@ -24,18 +24,6 @@ ChartJS.register(
 
 const labels = monthShort;
 
-// const data = {
-//   labels,
-//   datasets: [
-//     {
-//       //   label: "Dataset 1",
-//       data: labels.map(() => faker.number.int({ min: 5000, max: 50_000 })),
-//       backgroundColor: "#34CAA5",
-//       borderRadius: 100,
-//     },
-//   ],
-// };
-
 function createGradient(ctx, area) {
   const colorStart = "#34CAA500";
   const colorEnd = "#34CAA5";

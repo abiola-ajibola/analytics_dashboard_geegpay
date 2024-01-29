@@ -13,11 +13,17 @@ import ArrowRight from "../Icons/ArrowRight.svg?react";
 import Setting from "../Icons/Setting.svg?react";
 import Logout from "../Icons/Logout.svg?react";
 
-function IconWrapper({ children, href, color = "#B2ABAB" }) {
+function IconWrapper({ children, href, color = "#B2ABAB", border }) {
   return (
     <IconButton
       href={href}
-      sx={{ padding: "8px", margin: "0 3px 16px 3px", color }}
+      sx={{
+        padding: "8px",
+        margin: "0 3px 16px 3px",
+        color,
+        borderRadius: border ? "4px" : "none",
+        backgroundColor: border ? color : "none",
+      }}
     >
       {children}
     </IconButton>
@@ -61,7 +67,6 @@ export function NavBody({ theme, isDarkTheme, onSwitch }) {
         flexDirection: "column",
         justifyContent: "space-between",
         overflowY: "auto",
-        // overflowX: "hidden"
         "::-webkit-scrollbar": {
           display: "none",
         },
@@ -83,7 +88,10 @@ export function NavBody({ theme, isDarkTheme, onSwitch }) {
           </IconButton>
         </Box>
         <Box>
-          <IconWrapper href={"#category"}>
+          <IconWrapper
+            href={"#category"}
+            border={theme.palette.mode === "dark"}
+          >
             <Category />
           </IconWrapper>
           <IconWrapper href={"#trend"}>

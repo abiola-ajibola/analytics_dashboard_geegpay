@@ -17,10 +17,17 @@ const StyledSelect = styled(Select)(
     border-radius: 24px;
     border: 1px solid #E1DFDF;
     box-shadow: none;
+    background-color: transparent;
     &:hover {
         border-color: #E1DFDF;
         box-shadow: none;
     }
+  }
+  .select__menu {
+    background-color: ${theme.palette.background.paper};
+  }
+  .select__option:hover {
+    background-color: ${theme.palette.background.default}
   }
   .select__input-container {
     height: 16px;

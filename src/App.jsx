@@ -42,7 +42,7 @@ function App() {
       ? setTheme(lightTheme)
       : setTheme(darkTheme);
   };
-
+  console.log({ theme });
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -56,18 +56,17 @@ function App() {
             component="main"
             sx={{
               display: "grid",
-              gridTemplateColumns: "1.63fr 1fr",
+              gridTemplateColumns: { xs: "1fr", lg: "1.63fr 1fr" },
               gap: "20px",
               margin: "20px",
-              // overflowY: "auto",
               marginLeft: { md: "100px", xs: "20px" },
             }}
           >
-            <StyledBox sx={{ padding: "20px 16px", maxHeight: "374px" }}>
+            <StyledBox sx={{ padding: "20px 16px" }}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <TypoJakarta
                   fontWeight={600}
-                  fontSize="18px"
+                  fontSize={{ xs: "12px", sm: "18px" }}
                   lineHeight="24px"
                   color={theme.palette.text_.black_2}
                 >
@@ -91,7 +90,7 @@ function App() {
             </StyledBox>
             <StyledBox
               display={"grid"}
-              gridTemplateColumns={"1fr 1fr"}
+              gridTemplateColumns={{ xs: "1fr", sm: "1fr 1fr" }}
               gap="16px"
               sx={{ backgroundColor: "transparent" }}
             >
@@ -120,7 +119,7 @@ function App() {
                 value={faker.number.int({ min: 100, max: 2000 })}
               />
             </StyledBox>
-            <StyledBox padding={"20px"}>
+            <StyledBox maxWidth={"calc(100vw - 40px)"} padding={"20px"}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
                 <TypoJakarta
                   fontWeight={600}
@@ -145,7 +144,11 @@ function App() {
                   </TypoJakarta>
                 </Box>
               </Box>
-              {isLoading ? null : <OrdersTable rows={data} />}
+              {isLoading ? null : (
+                <Box>
+                  <OrdersTable rows={data} />
+                </Box>
+              )}
             </StyledBox>
             <StyledBox padding={"20px"}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -174,29 +177,25 @@ function App() {
               </Box>
               <ProgressBar
                 amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                pctChng={faker.number.int({ min: -100, max: 100 })}
                 title={"Book Bazaar"}
                 value={faker.number.int({ min: 0, max: 100 })}
                 slider_color="puple"
               />
               <ProgressBar
                 amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                pctChng={faker.number.int({ min: -100, max: 100 })}
-                title={"Book Bazaar"}
+                title={"Artisan Aisle"}
                 value={faker.number.int({ min: 0, max: 100 })}
                 slider_color="orange"
               />
               <ProgressBar
                 amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                pctChng={faker.number.int({ min: -100, max: 100 })}
-                title={"Book Bazaar"}
+                title={"Toy Troop"}
                 value={faker.number.int({ min: 0, max: 100 })}
                 slider_color="blue"
               />
               <ProgressBar
                 amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                pctChng={faker.number.int({ min: -100, max: 100 })}
-                title={"Book Bazaar"}
+                title={"XStore"}
                 value={faker.number.int({ min: 0, max: 100 })}
                 slider_color="red_1"
               />

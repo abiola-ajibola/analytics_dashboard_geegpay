@@ -29,7 +29,6 @@ export function ProgressBar({
   value,
   title,
   amount,
-  pctChng,
   slider_color = "purple",
 }) {
   return (
@@ -53,7 +52,7 @@ export function ProgressBar({
         color_variant="neutral_600"
       >
         <Box component={"span"}>${amount.toLocaleString("US")}</Box>
-        <Box component={"span"}>{pctChng}%</Box>
+        <Box component={"span"}>{value}%</Box>
       </ProgressTypo>
     </Box>
   );
