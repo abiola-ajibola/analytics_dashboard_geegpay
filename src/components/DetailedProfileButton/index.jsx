@@ -4,7 +4,7 @@ import ArrowDown from "../Icons/ArrowDown.svg?react";
 export function DetailedProfileButton({
   userName = "Justin Bergson",
   userEmail = "justin@gmail.com",
-  imageUrl = "/data/images/pexels-nappy-935969.jpg",
+  imageUrl = "/data/images/img_11.jpg",
 }) {
   return (
     <Box
@@ -35,7 +35,7 @@ export function DetailedProfileButton({
         <Typography
           fontFamily={"Inter, sans-serif"}
           textAlign={"right"}
-          color={"#26282C"}
+          color={(theme) => theme.palette.text_.black_2}
           fontSize={"16px"}
           lineHeight={"normal"}
           className="user_name"

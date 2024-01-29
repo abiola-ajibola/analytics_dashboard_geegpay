@@ -27,14 +27,23 @@ font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: 24px;
-color: ${color}
+color: ${color};
+display: flex;
+align-items: center;
+> img {
+  border-radius: 16px;
+  margin-right: 10px;
+}
 `;
 });
 
 export function OrdersTable({ rows }) {
   return (
     <TableContainer sx={{ boxShadow: "none" }} component={Paper}>
-      <Table sx={{ minWidth: 270 }} aria-label="orders table">
+      <Table
+        sx={{ minWidth: { xs: 670, md: "unset" } }}
+        aria-label="orders table"
+      >
         <TableHead>
           <TableRow>
             <TableCell>
@@ -55,7 +64,7 @@ export function OrdersTable({ rows }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => {
+          {rows.map((row, index) => {
             const date = new Date(row.date);
             const month = monthShort[date.getMonth()];
             const day = date.getDate();
@@ -67,7 +76,15 @@ export function OrdersTable({ rows }) {
               >
                 <TableCell component="th" scope="row">
                   <TypoJakarta500 color_variant="grey_black">
-                    {row.name}
+                    <img
+                      src={`/data/images/img_${
+                        index + 1 > 11 ? (index + 1) % 11 : index + 1
+                      }.jpg`}
+                      alt={row.name}
+                      width="32px"
+                      height="32px"
+                    />
+                    <Box component={"span"}>{row.name}</Box>
                   </TypoJakarta500>
                 </TableCell>
                 <TableCell align="left">

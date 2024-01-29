@@ -79,6 +79,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + 26px)`,
     transition: theme.transitions.create("width"),
+    color: "#0D062D",
     width: "100%",
     "::placeholder": {
       fontFamily: "Inter",
