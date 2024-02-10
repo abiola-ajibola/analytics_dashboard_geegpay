@@ -1,0 +1,18 @@
+{
+  "book_bazar": {
+    "value": 2207532,
+    "change": 17
+  },
+  "artisan_aisle": {
+    "value": 2721553,
+    "change": 63
+  },
+  "toy_troop": {
+    "value": 1301474,
+    "change": 44
+  },
+  "x_store": {
+    "value": 2674682,
+    "change": 54
+  }
+}

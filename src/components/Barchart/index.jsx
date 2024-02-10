@@ -8,10 +8,10 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { simpleFaker as faker} from '@faker-js/faker';
 import { useEffect, useRef, useState } from "react";
 import { useTheme } from "@mui/material";
 import { monthShort } from "../../constants/months";
+import { useApi } from "../../utils/hooks/useApi";
 
 ChartJS.register(
   CategoryScale,
@@ -37,10 +37,11 @@ function createGradient(ctx, area) {
 }
 
 export function Barchart() {
-    const theme= useTheme()
+  const theme = useTheme();
   const chartRef = useRef(null);
-  //   const [chart, setChart] = useState(null);
-  const [chartData, setChartData] = useState({ datasets: [{}] });
+  const query = useApi({ endpoint: "/data/sales.json", queryKey: ["sales"] });
+  const { data, isLoading } = query;
+  const [chartData, setChartData] = useState({ datasets: [{ data: [] }] });
   useEffect(() => {
     const _chart = chartRef.current;
     if (!_chart) {
@@ -51,9 +52,7 @@ export function Barchart() {
       labels,
       datasets: [
         {
-          data: labels.map(() =>
-            faker.number.int({ min: 5000, max: 50_000 })
-          ),
+          data: Object.values(data),
           backgroundColor: _chartBg,
           borderRadius: 100,
           maxBarThickness: 30,
@@ -61,12 +60,12 @@ export function Barchart() {
       ],
     };
     setChartData(_chartData);
-  }, []);
-  return (
+  }, [data]);
+  return isLoading ? null : (
     <Bar
       ref={chartRef}
       options={{
-        aspectRatio: 766 /288,
+        aspectRatio: 766 / 288,
         scales: {
           x: {
             display: true,
@@ -74,8 +73,8 @@ export function Barchart() {
               display: false,
             },
             ticks: {
-                color: theme.palette.text_.neutrl_600
-            }
+              color: theme.palette.text_.neutrl_600,
+            },
           },
           y: {
             max: 50000,
