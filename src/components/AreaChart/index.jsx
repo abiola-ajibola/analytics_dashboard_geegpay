@@ -10,7 +10,6 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { simpleFaker as faker } from '@faker-js/faker';
 import { useEffect, useRef, useState } from "react";
 
 ChartJS.register(
@@ -70,22 +69,9 @@ function createGradient(ctx, area, pctChange) {
 
 const labels = new Array(9).fill("");
 
-// const data = {
-//   labels,
-//   datasets: [
-//     {
-//       fill: true,
-//       data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
-//       borderColor: "rgb(53, 162, 235)",
-//       backgroundColor: "rgba(53, 162, 235, 0.5)",
-//     },
-//   ],
-// };
-
-export function AreaChart({ pctChange }) {
+export function AreaChart({ pctChange, data = [] }) {
   const chartRef = useRef(null);
-  //   const [chart, setChart] = useState(null);
-  const [chartData, setChartData] = useState({ datasets: [{}] });
+  const [chartData, setChartData] = useState({ datasets: [{ data }] });
   useEffect(() => {
     const _chart = chartRef.current;
     if (!_chart) {
@@ -98,19 +84,13 @@ export function AreaChart({ pctChange }) {
         {
           borderCapStyle: "square",
           fill: true,
-          data: labels.map(() => faker.number.int({ min: 0, max: 1000 })),
+          data,
           borderColor: pctChange < 0 ? "#ED544E" : "#66C87B",
           backgroundColor: _chartBg,
         },
       ],
     };
     setChartData(_chartData);
-  }, [pctChange]);
-  return (
-    <Line
-      ref={chartRef}
-      options={options}
-      data={chartData}
-    />
-  );
+  }, [pctChange, data]);
+  return <Line ref={chartRef} options={options} data={chartData} />;
 }

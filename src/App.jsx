@@ -94,27 +94,27 @@ function App() {
             >
               <InfoCard
                 Icon={BoxIcon}
-                pctChange={faker.number.int({ min: -100, max: 100 })}
                 title={"Total Order"}
-                value={faker.number.int({ min: 100, max: 2000 })}
+                dataEndoint={"/data/order_history.json"}
+                queryKey={["order_history"]}
               />
               <InfoCard
                 Icon={ReturnIcon}
-                pctChange={faker.number.int({ min: -100, max: 100 })}
                 title={"Total Refund"}
-                value={faker.number.int({ min: 100, max: 2000 })}
+                dataEndoint={"/data/refunds.json"}
+                queryKey={["refunds"]}
               />
               <InfoCard
                 Icon={ShoppingCartIcon}
-                pctChange={faker.number.int({ min: -100, max: 100 })}
                 title={"Average Sales"}
-                value={faker.number.int({ min: 100, max: 2000 })}
+                dataEndoint={"/data/average_sales.json"}
+                queryKey={["average_sales"]}
               />
               <InfoCard
                 Icon={CoinsIcon}
-                pctChange={faker.number.int({ min: -100, max: 100 })}
                 title={"Total Income"}
-                value={faker.number.int({ min: 100, max: 2000 })}
+                dataEndoint={"/data/total_income.json"}
+                queryKey={["total_income"]}
               />
             </StyledBox>
             <StyledBox maxWidth={"calc(100vw - 40px)"} padding={"20px"}>

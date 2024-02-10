@@ -3,6 +3,7 @@ import { AreaChart } from "../AreaChart";
 import { TypoJakarta } from "../Typography/TypoJakarta";
 import TrendUpIcon from "../Icons/TrendUpSmall.svg?react";
 import TrendDownIcon from "../Icons/TrendDownSmall.svg?react";
+import { useApi } from "../../utils/hooks/useApi";
 
 const StyledTag = styled(Box)(
   ({ theme, value }) => `
@@ -20,8 +21,6 @@ const StyledTag = styled(Box)(
   min-width: 70px;
 `
 );
-
-// const Span = () => <span />;
 
 const StyledBox = styled(Box)(
   () => `
@@ -42,9 +41,11 @@ function Tag({ value }) {
   );
 }
 
-export function InfoCard({ Icon, /* data, */ title, value, pctChange }) {
+export function InfoCard({ Icon, title, dataEndoint, queryKey }) {
+  const query = useApi({ endpoint: dataEndoint, queryKey });
+  const { data, isLoading } = query;
   const theme = useTheme();
-  return (
+  return isLoading ? null : (
     <Box
       sx={{
         padding: "16px",
@@ -67,7 +68,7 @@ export function InfoCard({ Icon, /* data, */ title, value, pctChange }) {
           <Icon />
         </Box>
         <Box className="chart_wrapper" height={"32px"} width={"104px"}>
-          <AreaChart pctChange={pctChange} />
+          <AreaChart data={data.chartData} pctChange={data.pctChange} />
         </Box>
       </Box>
       <TypoJakarta
@@ -86,11 +87,11 @@ export function InfoCard({ Icon, /* data, */ title, value, pctChange }) {
         color={theme.palette.text_.grey_black}
         mb={"10px"}
       >
-        {value}
+        {data.value}
       </TypoJakarta>
       <Box display={"flex"} justifyContent={"space-between"}>
         <Box>
-          <Tag value={pctChange} />
+          <Tag value={data.pctChange} />
         </Box>
         <Typography
           fontFamily="'Inter', 'sans-serif'"
