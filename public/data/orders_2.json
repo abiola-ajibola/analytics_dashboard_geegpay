@@ -1,0 +1,76 @@
+{
+  "total": 100,
+  "page": 2,
+  "data": [
+    {
+      "name": "John Doe",
+      "date": "2022-01-15T10:30:45.123Z",
+      "amount": 27500,
+      "status": "Paid",
+      "invoice": ""
+    },
+    {
+      "name": "Jane Smith",
+      "date": "2023-02-20T14:45:30.987Z",
+      "amount": 42000,
+      "status": "Refund",
+      "invoice": ""
+    },
+    {
+      "name": "Bob Johnson",
+      "date": "2022-11-05T08:15:12.456Z",
+      "amount": 16000,
+      "status": "Paid",
+      "invoice": ""
+    },
+    {
+      "name": "Alice Brown",
+      "date": "2021-09-10T18:20:32.789Z",
+      "amount": 36000,
+      "status": "Refund",
+      "invoice": ""
+    },
+    {
+      "name": "Charlie Davis",
+      "date": "2023-05-22T12:10:05.234Z",
+      "amount": 29500,
+      "status": "Paid",
+      "invoice": ""
+    },
+    {
+      "name": "Eva Wilson",
+      "date": "2022-07-08T07:55:11.567Z",
+      "amount": 18000,
+      "status": "Refund",
+      "invoice": ""
+    },
+    {
+      "name": "Frank Miller",
+      "date": "2021-04-03T03:40:00.111Z",
+      "amount": 48000,
+      "status": "Paid",
+      "invoice": ""
+    },
+    {
+      "name": "Grace Taylor",
+      "date": "2022-12-17T23:30:15.345Z",
+      "amount": 22500,
+      "status": "Refund",
+      "invoice": ""
+    },
+    {
+      "name": "Harry Clark",
+      "date": "2023-08-01T16:25:22.678Z",
+      "amount": 31000,
+      "status": "Paid",
+      "invoice": ""
+    },
+    {
+      "name": "Ivy Thomas",
+      "date": "2021-11-11T14:12:30.999Z",
+      "amount": 38500,
+      "status": "Refund",
+      "invoice": ""
+    }
+  ]
+}
