@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { CssBaseline, Box, Link } from "@mui/material";
 import { Sidebar } from "./components/Sidebar";
 import { simpleFaker as faker } from "@faker-js/faker";
 import { Topbar } from "./components/Topbar";
-import { getRequest } from "./utils/getRequest";
 import { Barchart } from "./components/Barchart";
 import { ChartDropdown } from "./components/ChartDropdown";
 import { TypoJakarta } from "./components/Typography/TypoJakarta";
@@ -28,14 +26,14 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 function App() {
-  const query = useQuery({
-    queryKey: ["orders"],
-    queryFn: () => getRequest("/data/orders.json"),
-    staleTime: Infinity,
-    refetchOnMount: false,
-  });
+  // const query = useQuery({
+  //   queryKey: ["orders"],
+  //   queryFn: () => getRequest("/data/orders.json"),
+  //   staleTime: Infinity,
+  //   refetchOnMount: false,
+  // });
   const [theme, setTheme] = useState(lightTheme);
-  const { data, isLoading } = query;
+  // const { data, isLoading } = query;
   const handleThemeSwitch = (mode) => {
     if (mode === theme.palette.mode) return;
     mode === lightTheme.palette.mode
@@ -144,11 +142,9 @@ function App() {
                   </TypoJakarta>
                 </Box>
               </Box>
-              {isLoading ? null : (
                 <Box>
-                  <OrdersTable rows={data} />
+                  <OrdersTable />
                 </Box>
-              )}
             </StyledBox>
             <StyledBox padding={"20px"}>
               <Box sx={{ display: "flex", justifyContent: "space-between" }}>
