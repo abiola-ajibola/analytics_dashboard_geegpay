@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ThemeProvider, createTheme, styled } from "@mui/material/styles";
 import { CssBaseline, Box, Link } from "@mui/material";
 import { Sidebar } from "./components/Sidebar";
-import { simpleFaker as faker } from "@faker-js/faker";
 import { Topbar } from "./components/Topbar";
 import { Barchart } from "./components/Barchart";
 import { ChartDropdown } from "./components/ChartDropdown";
@@ -14,7 +13,7 @@ import ReturnIcon from "./components/Icons/Rotate3D.svg?react";
 import ShoppingCartIcon from "./components/Icons/ShoppingCart.svg?react";
 import CoinsIcon from "./components/Icons/Coins.svg?react";
 import { OrdersTable } from "./components/OrdersTable";
-import { ProgressBar } from "./components/ProgressBar";
+import { TopPlatforms } from "./components/TopPlatforms";
 
 const darkTheme = createTheme(darkThemeConfig);
 
@@ -26,14 +25,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
 }));
 
 function App() {
-  // const query = useQuery({
-  //   queryKey: ["orders"],
-  //   queryFn: () => getRequest("/data/orders.json"),
-  //   staleTime: Infinity,
-  //   refetchOnMount: false,
-  // });
   const [theme, setTheme] = useState(lightTheme);
-  // const { data, isLoading } = query;
   const handleThemeSwitch = (mode) => {
     if (mode === theme.palette.mode) return;
     mode === lightTheme.palette.mode
@@ -147,54 +139,7 @@ function App() {
                 </Box>
             </StyledBox>
             <StyledBox padding={"20px"}>
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <TypoJakarta
-                  fontWeight={600}
-                  fontSize="18px"
-                  lineHeight="24px"
-                  color={theme.palette.text_.black_2}
-                >
-                  Top Platform
-                </TypoJakarta>
-                <Box display={"flex"}>
-                  <TypoJakarta>
-                    <Link
-                      href="#seeAll"
-                      fontSize="18px"
-                      fontWeight={500}
-                      lineHeight="26px"
-                      color={theme.palette.text_.accent}
-                      sx={{ textDecoration: "none" }}
-                    >
-                      See All
-                    </Link>
-                  </TypoJakarta>
-                </Box>
-              </Box>
-              <ProgressBar
-                amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                title={"Book Bazaar"}
-                value={faker.number.int({ min: 0, max: 100 })}
-                slider_color="puple"
-              />
-              <ProgressBar
-                amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                title={"Artisan Aisle"}
-                value={faker.number.int({ min: 0, max: 100 })}
-                slider_color="orange"
-              />
-              <ProgressBar
-                amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                title={"Toy Troop"}
-                value={faker.number.int({ min: 0, max: 100 })}
-                slider_color="blue"
-              />
-              <ProgressBar
-                amount={faker.number.int({ min: 100_000, max: 5_000_000 })}
-                title={"XStore"}
-                value={faker.number.int({ min: 0, max: 100 })}
-                slider_color="red_1"
-              />
+              <TopPlatforms />
             </StyledBox>
           </Box>
         </Box>
