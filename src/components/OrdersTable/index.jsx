@@ -52,10 +52,8 @@ export function OrdersTable() {
   });
   const { data, isLoading } = query;
   const rows = data?.data;
-  console.log({ rows, page, view });
 
   const handlePageChange = (e, newPage) => {
-    console.log({ newPage });
     if (rowsPerPage === 5 && startPoint === 0) {
       setView(newPage % 2);
       setStartPoint(5);
@@ -163,11 +161,9 @@ export function OrdersTable() {
 
       <TablePagination
         component={Box}
-        // rowsPerPageOptions={[5, 10, 15, 20, 25]}
         rowsPerPageOptions={[5, 10]}
         count={data.total}
         rowsPerPage={rowsPerPage}
-        // page={rowsPerPage === 5 ? view : page}
         page={rowsPerPage === 5 ? 2 * page + view : page}
         onPageChange={handlePageChange}
         onRowsPerPageChange={handleRowsPerPageChange}
